@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #7e7979;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translate(-50%,-50%);
+            background: #e1e1e1;
+            width: 500px;
+            height: 450px;
+            border-radius: 20px;
+            box-shadow: 0 10px rgba(110, 110, 110,.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        h2{
+            color: rgb(0, 0, 0);
+            position: absolute;
+            font-size:xxx-large;
+            border-radius: 20px;
+            margin-bottom: 350px;
+            
+        }
+        input[type="text"]{
+            width: calc(100% - 70px);
+            padding: 20px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 10px;margin-top: 2;
+            margin-top: 55px;
+            
+        }
+
+        input[type="password"]{
+            width: calc(100% - 70px);
+            padding: 20px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 10px;margin-top: 2;
+            
+        }
+        
+
+        button{
+            width: calc(100% - 140px);
+            padding: 17px;
+            margin-top: 25px;
+            border-radius: 25px;
+            color: rgb(255, 255, 255);
+            background-color: black;
+            
+        }
+        button:hover{
+            color: black;
+            background-color: #ffffff;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            
+        }
+
+        .success-message {
+            color: green;
+        }
+
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <div class="message" id="message"></div>
+        <input type="text" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="validateForm()">Sign Up</button>
+    </div>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+            const message = document.getElementById("message");
+
+            if (!emailRegex.test(email)) {
+                alert("Invalid email address");
+            } else if (!passwordRegex.test(password)) {
+                alert("Invalid password. It must contain at least one uppercase letter, one number, one special character, and be at least 8 characters long.");
+            } else {
+                alert("Sign up successful!");
+                message.className = "success-message";
+                document.getElementById("email").value = "";
+                document.getElementById("password").value = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
